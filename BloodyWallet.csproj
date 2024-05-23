@@ -34,22 +34,8 @@
 	  <PackageReference Include="VRising.Unhollowed.Client" Version="1.0.0.*" />
 	  <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.668" IncludeAssets="compile" />
 	  <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
-	  <PackageReference Include="Iced" Version="1.18.0" />
-	  <PackageReference Include="Standart.Hash.xxHash" Version="3.1.0">
-		  <PrivateAssets>all</PrivateAssets>
-	  </PackageReference>
-	  <PackageReference Include="Costura.Fody" Version="5.7.0">
-		  <PrivateAssets>all</PrivateAssets>
-	  </PackageReference>
-	  <PackageReference Include="Fody" Version="6.6.2" />
-	  <PackageReference Include="System.Text.Json" Version="6.0.7" />
+	  <PackageReference Include="Bloody.Core" Version="1.2.*" />
   </ItemGroup>
-	<ItemGroup>
-		<Reference Include="Bloody.Core">
-			<HintPath>Bloody.Core.dll</HintPath>
-			<Private>true</Private>
-		</Reference>
-	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Command\" />
 	</ItemGroup>

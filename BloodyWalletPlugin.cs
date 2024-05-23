@@ -2,13 +2,14 @@
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
-using Bloody.Core.API;
-using Bloody.Core.Helper;
+using Bloody.Core.API.v1;
+using Bloody.Core.Helper.v1;
 using BloodyWallet.DB;
 
 namespace BloodyWallet;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
+[BepInDependency("trodi.Bloody.Core")]
 public class BloodyWalletPlugin : BasePlugin
 {
 #nullable disable

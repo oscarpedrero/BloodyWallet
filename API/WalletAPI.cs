@@ -1,4 +1,4 @@
-﻿using Bloody.Core.Models;
+﻿using Bloody.Core.Models.v1;
 using Bloody.Core;
 using BloodyWallet.DB.Models;
 using BloodyWallet.DB;
@@ -6,6 +6,7 @@ using Unity.Entities;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Bloody.Core.GameData.v1;
 
 namespace BloodyWallet.API;
 
@@ -21,8 +22,8 @@ public static class WalletAPI
 
         try
         {
-            UserModel user = Core.Users.FromEntity(userEntityExecuteFunction);
-            UserModel player = Core.Users.FromEntity(playerReciviedTokens);
+            UserModel user = GameData.Users.FromEntity(userEntityExecuteFunction);
+            UserModel player = GameData.Users.FromEntity(playerReciviedTokens);
 
             string playerCharacterName = player.CharacterName;
             if (Database.AddTokenToPlayer(playerCharacterName, _amount))
@@ -56,8 +57,8 @@ public static class WalletAPI
 
         try
         {
-            UserModel user = Core.Users.FromEntity((Entity)userEntityExecuteFunction);
-            UserModel player = Core.Users.FromEntity(playerReciviedTokens);
+            UserModel user = GameData.Users.FromEntity((Entity)userEntityExecuteFunction);
+            UserModel player = GameData.Users.FromEntity(playerReciviedTokens);
 
             string playerCharacterName = player.CharacterName;
             if (Database.RemoveTokenToPlayer(playerCharacterName, _amount))
@@ -102,7 +103,7 @@ public static class WalletAPI
             }
             else
             {
-                UserModel user = Core.Users.GetUserByCharacterName(_playerName);
+                UserModel user = GameData.Users.GetUserByCharacterName(_playerName);
                 TokenModel? tokenModel = Database._TokensDB.Where(x => x.CharacterName == user.CharacterName).FirstOrDefault();
                 if (tokenModel == null)
                 {
@@ -122,6 +123,36 @@ public static class WalletAPI
         }
     }
 
+    public static bool GetTotalTokensForUser(string password, string _playerName, out int tokens)
+    {
+        if (password != BloodyWalletPlugin.password.Value)
+        {
+            tokens = 0;
+            return false;
+        }
+
+        try
+        {
+            UserModel user = GameData.Users.GetUserByCharacterName(_playerName);
+            TokenModel? tokenModel = Database._TokensDB.Where(x => x.CharacterName == user.CharacterName).FirstOrDefault();
+            if (tokenModel == null)
+            {
+                tokens = 0;
+                return true;
+            }
+            else
+            {
+                tokens = tokenModel.Tokens;
+                return true;
+            }
+        }
+        catch (Exception e)
+        {
+            tokens = 0;
+            return false;
+        }
+    }
+
     public static bool TranferTokenFromOtherUser(string password, int _amount, string _method, Entity playerReciviedTokens, Entity fromUserSendToken, out string message)
     {
         if (password != BloodyWalletPlugin.password.Value)
@@ -132,8 +163,8 @@ public static class WalletAPI
 
         try
         {
-            UserModel fromplayer = Core.Users.FromEntity(fromUserSendToken);
-            UserModel player = Core.Users.FromEntity(playerReciviedTokens);
+            UserModel fromplayer = GameData.Users.FromEntity(fromUserSendToken);
+            UserModel player = GameData.Users.FromEntity(playerReciviedTokens);
 
             string toPlayerCharacterName = player.CharacterName;
             string fromPlayerCharacterName = fromplayer.CharacterName;
