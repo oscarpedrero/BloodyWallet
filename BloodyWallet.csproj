@@ -2,28 +2,29 @@
 	<PropertyGroup>
 		<AssemblyName>BloodyWallet</AssemblyName>
 		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<BepInExPluginGuid>trodi.bloody.Wallet</BepInExPluginGuid>
+		<Version>0.1.0</Version>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<LangVersion>latest</LangVersion>
-		<AssemblyVersion>0.0.1</AssemblyVersion>
-		<Version>0.0.1</Version>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<Version>0.0.9999</Version>
-		<!-- This is local version, otherwise property set by CI -->
-		<PackageId>BloodyWallet</PackageId>
+		<Nullable>enable</Nullable>
+		<RestoreSources>
+			https://api.nuget.org/v3/index.json;
+			https://nuget.bepinex.dev/v3/index.json;
+		</RestoreSources>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Description>Framework for Mods</Description>
+		<PackageProjectUrl>https://github.com/oscarpedrero/BloodyWallet</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/oscarpedrero/BloodyWallet</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Title>$(AssemblyName)</Title>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageId>Bloody.Wallet</PackageId>
+		<BepInExPluginGuid>trodi.Bloody.Wallet</BepInExPluginGuid>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Authors>trodi</Authors>
 		<Company>trodi</Company>
-		<Description>Framework / Plugin to generate a Token wallet on a VRising server.</Description>
-		<PackageIcon>icon.png</PackageIcon>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageLicenseFile>License</PackageLicenseFile>
 		<PackageTags>Bloody</PackageTags>
-		<PackageProjectUrl>https://wiki.vrisingmods.com/</PackageProjectUrl>
-		<PackageRepositoryUrl>https://github.com/decaprime/Bloodstone</PackageRepositoryUrl>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="icon.png" Pack="true" PackagePath="\" />
@@ -31,14 +32,13 @@
 		<None Include="License" Pack="true" Visible="false" PackagePath="" />
 	</ItemGroup>
   <ItemGroup>
-	  <PackageReference Include="VRising.Unhollowed.Client" Version="1.0.0.*" />
-	  <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.668" IncludeAssets="compile" />
-	  <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
+	  <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.691" IncludeAssets="compile" />
+	  <PackageReference Include="BepInEx.Core" Version="6.0.0-be.691" IncludeAssets="compile" />
+	  <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+	  <PackageReference Include="VRising.Unhollowed.Client" Version="1.0.*" />
+	  <PackageReference Include="VRising.VampireCommandFramework" Version="0.8.*" />
 	  <PackageReference Include="Bloody.Core" Version="1.2.*" />
   </ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Command\" />
-	</ItemGroup>
 	<Target Name="CopyDLLs" AfterTargets="Build">
 		<Message Text="DLL to VRising server" Importance="High" />
 		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\VRising\VRising_Server\BepInEx\plugins\" />

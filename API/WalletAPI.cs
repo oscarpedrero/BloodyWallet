@@ -1,5 +1,4 @@
 ﻿using Bloody.Core.Models.v1;
-using Bloody.Core;
 using BloodyWallet.DB.Models;
 using BloodyWallet.DB;
 using Unity.Entities;
@@ -12,14 +11,8 @@ namespace BloodyWallet.API;
 
 public static class WalletAPI
 {
-    public static bool AddTokenToUser(string password, int _amount, string _method, Entity playerReciviedTokens, Entity userEntityExecuteFunction, out string message)
+    public static bool AddTokenToUser(int _amount, string _method, Entity playerReciviedTokens, Entity userEntityExecuteFunction, out string message)
     {
-        if (password != BloodyWalletPlugin.password.Value)
-        {
-            message = $"Password i not valid";
-            return false;
-        }
-
         try
         {
             UserModel user = GameData.Users.FromEntity(userEntityExecuteFunction);
@@ -46,15 +39,8 @@ public static class WalletAPI
         }
     }
 
-    public static bool RemoveToken(string password, int _amount, string _method, Entity playerReciviedTokens, Entity userEntityExecuteFunction, out string message)
+    public static bool RemoveToken(int _amount, string _method, Entity playerReciviedTokens, Entity userEntityExecuteFunction, out string message)
     {
-
-        if (password != BloodyWalletPlugin.password.Value)
-        {
-            message = $"Password i not valid";
-            return false;
-        }
-
         try
         {
             UserModel user = GameData.Users.FromEntity((Entity)userEntityExecuteFunction);
@@ -81,15 +67,9 @@ public static class WalletAPI
         }
     }
 
-    public static bool listToken(string password, string _playerName, out List<string> message)
+    public static bool listToken(string _playerName, out List<string> message)
     {
         message = new();
-
-        if (password != BloodyWalletPlugin.password.Value)
-        {
-            message.Add($"Password i not valid");
-            return false;
-        }
 
         try
         {
@@ -123,13 +103,8 @@ public static class WalletAPI
         }
     }
 
-    public static bool GetTotalTokensForUser(string password, string _playerName, out int tokens)
+    public static bool GetTotalTokensForUser(string _playerName, out int tokens)
     {
-        if (password != BloodyWalletPlugin.password.Value)
-        {
-            tokens = 0;
-            return false;
-        }
 
         try
         {
@@ -153,14 +128,8 @@ public static class WalletAPI
         }
     }
 
-    public static bool TranferTokenFromOtherUser(string password, int _amount, string _method, Entity playerReciviedTokens, Entity fromUserSendToken, out string message)
+    public static bool TranferTokenFromOtherUser(int _amount, string _method, Entity playerReciviedTokens, Entity fromUserSendToken, out string message)
     {
-        if (password != BloodyWalletPlugin.password.Value)
-        {
-            message = $"Password i not valid";
-            return false;
-        }
-
         try
         {
             UserModel fromplayer = GameData.Users.FromEntity(fromUserSendToken);
