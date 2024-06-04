@@ -7,8 +7,8 @@ namespace BloodyWallet.DB
 {
     internal static class Database
     {
-        internal static List<TokenModel> _TokensDB = [];
-        internal static List<LogModel> _LogDB = [];
+        internal static List<TokenModel> _TokensDB = new();
+        internal static List<LogModel> _LogDB = new();
 
         internal static List<TokenModel> getTokensDB()
         {
