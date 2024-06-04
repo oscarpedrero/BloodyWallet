@@ -15,7 +15,7 @@ Ensure the following mods are installed for seamless integration:
 You must include it in your `.csproj` file as a nuget package
 
 ```c#
-<PackageReference Include="BloodyWallet" Version="0.1.*" />
+<PackageReference Include="Bloody.Wallet" Version="0.1.*" />
 ```
 
 You must include it as a project dependency in your `Plugin.cs` file
