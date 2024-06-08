@@ -157,5 +157,10 @@ public static class WalletAPI
             return false;
         }
     }
+
+    public static int GetPrefabGUID()
+    {
+        return BloodyWalletPlugin.prefabGUIDExchange.Value;
+    }
 }
 
