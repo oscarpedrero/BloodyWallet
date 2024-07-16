@@ -19,6 +19,12 @@ namespace BloodyWallet.Command
         [Command("transfer", usage: "<PlayerName> <Amount>", description: "Transfer token from your wallet to a another player", adminOnly: false)]
         public static void TransferToken(ChatCommandContext ctx, string _playerName, int _amount)
         {
+
+            if(_amount <= 0)
+            {
+                throw ctx.Error("The amount to be transferred must be greater than 0");
+            }
+
             UserModel userModel = GameData.Users.GetUserByCharacterName(ctx.User.CharacterName.Value);
             UserModel playerModel = GameData.Users.GetUserByCharacterName(_playerName);
             if (WalletAPI.TranferTokenFromOtherUser(_amount, MethodsLog.FromCommandAdmin, playerModel.Entity, userModel.Entity, out string message))

@@ -10,6 +10,18 @@ Ensure the following mods are installed for seamless integration:
 2. [VampireCommandFramework](https://thunderstore.io/c/v-rising/p/deca/VampireCommandFramework/)
 3. [Bloody.Core](https://thunderstore.io/c/v-rising/p/Trodi/BloodyCore/)
 
+<details>
+<summary>Changelog</summary>
+
+`0.1.2`
+- Fixed error when you make a negative money transfer it doubles the amount in the wallet
+
+`0.1.0`
+- First Release
+
+
+</details>
+
 ## Instructions for using it with your mod
 
 You must include it in your `.csproj` file as a nuget package
