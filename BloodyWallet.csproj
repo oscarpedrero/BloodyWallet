@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<AssemblyName>BloodyWallet</AssemblyName>
 		<TargetFramework>net6.0</TargetFramework>
-		<Version>0.1.2</Version>
+		<Version>1.0.0</Version>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
@@ -32,12 +32,11 @@
 		<None Include="License" Pack="true" Visible="false" PackagePath="" />
 	</ItemGroup>
   <ItemGroup>
-	  <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.691" IncludeAssets="compile" />
-	  <PackageReference Include="BepInEx.Core" Version="6.0.0-be.691" IncludeAssets="compile" />
-	  <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-	  <PackageReference Include="VRising.Unhollowed.Client" Version="1.0.*" />
-	  <PackageReference Include="VRising.VampireCommandFramework" Version="0.8.*" />
-	  <PackageReference Include="Bloody.Core" Version="1.2.*" />
+	  <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
+	  <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.733" IncludeAssets="compile" />
+	  <PackageReference Include="VRising.Unhollowed.Client" Version="1.1.*" />
+	  <PackageReference Include="VRising.VampireCommandFramework" Version="0.9.*" />
+	  <PackageReference Include="Bloody.Core" Version="2.*" />
   </ItemGroup>
 	<Target Name="CopyDLLs" AfterTargets="Build">
 		<Message Text="DLL to VRising server" Importance="High" />

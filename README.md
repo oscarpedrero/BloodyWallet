@@ -2,16 +2,21 @@
 
 This framework is designed to add a virtual currency to VRising. This opens up a world of possibilities for other mods to integrate with it and serve as a bridge for other mods to use this functionality.
 
+## [BepInEx 1.733.2 (RC2)](https://github.com/decaprime/VRising-Modding/releases/tag/1.733.2)
+
 ## Requirements
 
 Ensure the following mods are installed for seamless integration:
 
-1. [BepInEx](https://thunderstore.io/c/v-rising/p/BepInEx/BepInExPack_V_Rising/)
+1. [BepInEx 1.733.2 (RC2)](https://github.com/decaprime/VRising-Modding/releases/tag/1.733.2)
 2. [VampireCommandFramework](https://thunderstore.io/c/v-rising/p/deca/VampireCommandFramework/)
 3. [Bloody.Core](https://thunderstore.io/c/v-rising/p/Trodi/BloodyCore/)
 
 <details>
 <summary>Changelog</summary>
+
+`1.0.0`
+- Updated to Oakveil
 
 `0.1.2`
 - Fixed error when you make a negative money transfer it doubles the amount in the wallet
@@ -27,7 +32,7 @@ Ensure the following mods are installed for seamless integration:
 You must include it in your `.csproj` file as a nuget package
 
 ```c#
-<PackageReference Include="Bloody.Wallet" Version="0.1.*" />
+<PackageReference Include="Bloody.Wallet" Version="1.0.*" />
 ```
 
 You must include it as a project dependency in your `Plugin.cs` file
